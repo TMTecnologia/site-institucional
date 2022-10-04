@@ -1,0 +1,21 @@
+---
+import BlogGridItem from './BlogGridItem.astro';
+
+import type { Post } from './BlogGridItem.astro';
+
+export interface Props {
+  posts?: Post[];
+}
+
+const { posts } = Astro.props;
+console.log({ posts: JSON.stringify(posts) });
+---
+
+<div class="grid grid-cols-3 gap-6">
+  {(!posts || posts.length == 0) && 'No posts founds'}
+  {
+    posts && posts.length > 0
+      ? posts.map((post) => <BlogGridItem post={post} />)
+      : null
+  }
+</div>
