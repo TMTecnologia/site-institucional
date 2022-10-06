@@ -34,7 +34,6 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-console.log({ post: JSON.stringify(post) });
 const { title, slug, featuredImage, excerpt, author } = post.attributes;
 ---
 
