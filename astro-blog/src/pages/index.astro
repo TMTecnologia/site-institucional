@@ -2,18 +2,20 @@
 import BlogGrid from '../components/BlogGrid.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Component Imports
 import qs from 'qs';
 
 const query = qs.stringify(
   {
     fields: ['title', 'slug', 'excerpt'],
-    // populate: ['*'],
     populate: {
-      author: {},
-      //   fields: ['name'],
-      //   populate: ['*'],
-      // },
+      author: {
+        fields: ['name'],
+        populate: {
+          bioImage: {
+            fields: ['url'],
+          },
+        },
+      },
       featuredImage: {
         fields: ['url'],
       },
